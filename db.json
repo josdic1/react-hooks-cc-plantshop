@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Aloe",
       "image": "./images/aloe.jpg",
-      "price": 15.99
+      "price": 14.99
     },
     {
       "id": 2,
@@ -41,6 +41,24 @@
       "name": "Fiddle Leaf Fig",
       "image": "./images/fiddle-leaf-fig.jpg",
       "price": 55
+    },
+    {
+      "name": "Christmas Cactus",
+      "image": "https://hips.hearstapps.com/hmg-prod/≈mages/christmas-cactus-galore-royalty-free-image-1694694209.jpg",
+      "price": "20",
+      "id": 8
+    },
+    {
+      "name": "noivern",
+      "image": "https://semantic-ui.com/images/avatar/large/helen.jpg",
+      "price": "12",
+      "id": 9
+    },
+    {
+      "name": "",
+      "image": "",
+      "price": "",
+      "id": 10
     }
   ]
 }

@@ -1,15 +1,47 @@
-import React from "react";
+import { useState } from "react";
 
-function PlantCard() {
+function PlantCard({ plant, onUpdatePrice, onDelete }) {
+  const [isInStock, setIsInStock] = useState(true);
+  const [price, setPrice] = useState(plant.price);
+  const [editing, setEditing] = useState(false);
+
+  function toggleStock() {
+    setIsInStock((prev) => !prev);
+  }
+
+  function handlePriceSave() {
+    onUpdatePrice(plant.id, price);
+    setEditing(false);
+  }
+
   return (
     <li className="card" data-testid="plant-item">
-      <img src={"https://via.placeholder.com/400"} alt={"plant name"} />
-      <h4>{"plant name"}</h4>
-      <p>Price: {"plant price"}</p>
-      {true ? (
-        <button className="primary">In Stock</button>
+      <img src={plant.image} alt={plant.name} />
+      <h4>{plant.name}</h4>
+
+      {editing ? (
+        <>
+          <input
+            type="number"
+            step="0.01"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+          />
+          <button onClick={handlePriceSave}>Save</button>
+        </>
       ) : (
-        <button>Out of Stock</button>
+        <>
+          <p>Price: {price}</p> 
+          <button onClick={() => setEditing(true)}>Edit Price</button>
+        </>
+      )}
+
+      <button onClick={() => onDelete(plant.id)}>Delete</button>
+
+      {isInStock ? (
+        <button className="primary" onClick={toggleStock}>In Stock</button>
+      ) : (
+        <button onClick={toggleStock}>Out of Stock</button>
       )}
     </li>
   );
